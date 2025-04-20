@@ -44,15 +44,6 @@ if pd.notna(selected_video['video_url']):
 else:
     st.info("No video URL available for this topic.")
 
-# Show sentiment plot
-st.subheader("📈 Sentiment Distribution: YouTube vs Reddit")
-image_path = "data/sentiment_distribution.png"
-if os.path.exists(image_path):
-    image = Image.open(image_path)
-    st.image(image, caption="KDE Plot of Sentiment Scores", use_container_width=True)
-else:
-    st.warning("Sentiment plot image not found.")
-
 # Show LLM insight
 st.subheader("💡 LLM Summary & Insights")
 filtered_llm = llm_df[llm_df['topic'] == selected_topic]
@@ -61,3 +52,12 @@ if not filtered_llm.empty:
     st.markdown(filtered_llm['llm_analysis'].values[0])
 else:
     st.warning("No insights found for this topic.")
+
+# Show sentiment plot
+st.subheader("📈 Overall Sentiment Distribution: YouTube vs Reddit")
+image_path = "data/sentiment_distribution.png"
+if os.path.exists(image_path):
+    image = Image.open(image_path)
+    st.image(image, caption="KDE Plot of Sentiment Scores", use_container_width=True)
+else:
+    st.warning("Sentiment plot image not found.")
