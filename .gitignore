@@ -12,9 +12,5 @@ __pycache__/
 env/
 venv/
 
-# Data files
-data/*.csv
-data/*.png
-
 # Jupyter notebooks checkpoints
 .ipynb_checkpoints/
