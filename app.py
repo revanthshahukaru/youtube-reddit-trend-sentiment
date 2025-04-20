@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import os
+import re
 
 # Page setup
 st.set_page_config(page_title="YouTube & Reddit Sentiment Explorer", layout="wide")
@@ -20,27 +21,43 @@ st.markdown("""
 st.title("📊 Social Media Sentiment Dashboard")
 st.markdown("This dashboard displays trending topics from YouTube and their sentiment analysis across YouTube and Reddit.")
 
-# Load data
+# Ensure data folder exists
 os.makedirs("data", exist_ok=True)
 
+# Load data
 yt_df = pd.read_csv("data/youtube_data.csv")
 llm_df = pd.read_csv("data/llm_insights.csv")
 
-# Show sentiment plot
-st.subheader("🎯 Sentiment Distribution: YouTube vs Reddit")
-image = Image.open("data/sentiment_distribution.png")
-st.image(image, caption="KDE Plot of Sentiment Scores", use_container_width=True)
+# Get unique video list for dropdown
+unique_videos = yt_df[['video_title', 'channel', 'video_url']].drop_duplicates()
+video_titles = unique_videos['video_title'].tolist()
 
-# Show trending topics
+# Select topic
 st.subheader("🔥 Trending Topics")
-top_topics = yt_df['video_title'].value_counts().head(10).index.tolist()
-selected_topic = st.selectbox("Select a topic to explore insights:", top_topics)
+selected_topic = st.selectbox("Select a topic to explore insights:", video_titles)
+selected_video = unique_videos[unique_videos['video_title'] == selected_topic].iloc[0]
 
-# Show LLM analysis
+# Embed video
+st.subheader("▶️ YouTube Video")
+if pd.notna(selected_video['video_url']):
+    st.video(selected_video['video_url'])
+else:
+    st.info("No video URL available for this topic.")
+
+# Show sentiment plot
+st.subheader("📈 Sentiment Distribution: YouTube vs Reddit")
+image_path = "data/sentiment_distribution.png"
+if os.path.exists(image_path):
+    image = Image.open(image_path)
+    st.image(image, caption="KDE Plot of Sentiment Scores", use_container_width=True)
+else:
+    st.warning("Sentiment plot image not found.")
+
+# Show LLM insight
+st.subheader("💡 LLM Summary & Insights")
 filtered_llm = llm_df[llm_df['topic'] == selected_topic]
 
 if not filtered_llm.empty:
-    st.markdown("### 💡 LLM Summary & Insights")
-    st.write(filtered_llm['llm_analysis'].values[0])
+    st.markdown(filtered_llm['llm_analysis'].values[0])
 else:
     st.warning("No insights found for this topic.")
