@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
+import os
 
 # Page setup
 st.set_page_config(page_title="YouTube & Reddit Sentiment Explorer", layout="wide")
@@ -8,6 +9,8 @@ st.title("📊 Social Media Sentiment Dashboard")
 st.markdown("This dashboard displays trending topics from YouTube and their sentiment analysis across YouTube and Reddit.")
 
 # Load data
+os.makedirs("data", exist_ok=True)
+
 yt_df = pd.read_csv("data/youtube_data.csv")
 llm_df = pd.read_csv("data/llm_insights.csv")
 
