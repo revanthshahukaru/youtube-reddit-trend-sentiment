@@ -10,10 +10,10 @@ st.set_page_config(page_title="YouTube & Reddit Sentiment Explorer", layout="wid
 # Custom CSS for margins
 st.markdown("""
     <style>
-    .main {
+    .block-container {
         max-width: 1000px;
-        margin: 0 auto;
-        padding: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
     </style>
 """, unsafe_allow_html=True)
