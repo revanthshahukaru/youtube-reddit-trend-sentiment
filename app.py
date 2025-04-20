@@ -7,9 +7,11 @@ import time
 from openai import OpenAI
 from dotenv import load_dotenv
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 # Load API keys
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Page setup
 st.set_page_config(page_title="YouTube & Reddit Sentiment Explorer", layout="wide")
