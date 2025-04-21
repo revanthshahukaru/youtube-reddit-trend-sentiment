@@ -79,6 +79,7 @@ if view == "📊 Dashboard":
         st.warning("No insights found for this topic.")
 
     st.subheader("📈 Overall Sentiment Distribution: YouTube vs Reddit")
+    st.markdown("The following graph displays the overall sentiment distribution across YouTube and Reddit only for the above trending topics. A new graph shall be generated in lieu of the new trending topics.")
     image_path = "data/sentiment_distribution.png"
     if os.path.exists(image_path):
         image = Image.open(image_path)
