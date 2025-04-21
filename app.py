@@ -119,6 +119,26 @@ elif view == "🔍 Reddit Search":
         summary = get_llm_summary(full_prompt, system_message)
         st.subheader("💬 LLM Summary")
         st.markdown(summary, unsafe_allow_html=True)
+        st.subheader("🗣 Top 13 Reddit Comments + Sentiment")
+
+        try:
+            # Load the top 13 sentiment-analyzed comments from CSV
+            reddit_df = pd.read_csv("data/reddit_data.csv")
+
+            # Filter by the search topic if possible (optional, comment this if unnecessary)
+            filtered_df = reddit_df[reddit_df["youtube_title"].str.contains(query, case=False, na=False)]
+
+            # Only get the first 13 rows (the notebook output)
+            top_13 = filtered_df.head(13)
+
+            # Display each comment with its emoji
+            for idx, row in top_13.iterrows():
+                st.markdown(f"**{row['comment_sentiment_emoji']}** {row['comment']}")
+
+        except Exception as e:
+            st.warning("⚠️ Could not load Reddit comment data.")
+            st.exception(e)
+
 
 # Combined YouTube + Reddit Search
 elif view == "🎥 Combined YouTube + Reddit":
