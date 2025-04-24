@@ -1,19 +1,19 @@
-youtube-reddit-trend-sentiment/
-├── .gitignore
-├── LICENSE.txt
-├── README.md
-├── app.py
-├── requirements.txt
-├── data/
-│   ├── Flow-Diagram.png
-│   ├── llm_insights.csv
-│   ├── reddit_data.csv
-│   ├── sentiment_distribution.png
-│   └── youtube_data.csv
-└── notebooks/
-    ├── 01-YouTube-API.ipynb
-    ├── 02-Reddit-API.ipynb
-    └── 03-Final.ipynb
+youtube-reddit-trend-sentiment/  
+├── .gitignore  
+├── LICENSE.txt  
+├── README.md  
+├── app.py  
+├── requirements.txt  
+├── data/  
+│   ├── Flow-Diagram.png  
+│   ├── llm_insights.csv  
+│   ├── reddit_data.csv  
+│   ├── sentiment_distribution.png  
+│   └── youtube_data.csv  
+└── notebooks/  
+    ├── 01-YouTube-API.ipynb  
+    ├── 02-Reddit-API.ipynb  
+    └── 03-Final.ipynb  
 
 
 
