@@ -1,34 +1,19 @@
 youtube-reddit-trend-sentiment/
-
-├── .gitignore (This might not have been included in the above zip file but can be seen on our GitHub Repo)
-
+├── .gitignore
 ├── LICENSE.txt
-
 ├── README.md
-
 ├── app.py
-
 ├── requirements.txt
-
 ├── data/
-
-│  ├── Flow-Diagram.png
-
-│  ├── llm_insights.csv
-
-│  ├── reddit_data.csv
-
-│  ├── sentiment_distribution.png
-
-│  └── youtube_data.csv
-
+│   ├── Flow-Diagram.png
+│   ├── llm_insights.csv
+│   ├── reddit_data.csv
+│   ├── sentiment_distribution.png
+│   └── youtube_data.csv
 └── notebooks/
-
-  ├── 01-YouTube-API.ipynb
-
-  ├── 02-Reddit-API.ipynb
-
-  └── 03-Final.ipynb
+    ├── 01-YouTube-API.ipynb
+    ├── 02-Reddit-API.ipynb
+    └── 03-Final.ipynb
 
 
 
