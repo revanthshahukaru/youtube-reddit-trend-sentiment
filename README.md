@@ -17,7 +17,7 @@ youtube-reddit-trend-sentiment/
    |- 03-Final.ipynb               # Merges data, applies sentiment analysis, and generates insights
 ```
 
-
+Link to our Streamlit Web App: https://youtube-reddit-trend-sentiment.streamlit.app/
 
 Here is a basic Introduction to our project– 
 # YouTube & Reddit Sentiment Explorer
